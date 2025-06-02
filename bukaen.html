@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Efek Ketik Multi Paragraf</title>
+  <style>
+    body {
+      font-family: monospace;
+      font-size: 18px;
+      padding: 20px;
+    }
+    .paragraph {
+      margin-bottom: 20px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="content"></div>
+
+  <script>
+    const paragraphs = [
+      "Happy birthday to my ugly sister 😒🙄😑.",
+      "Another year older, wiser and still fighting your greatest enemy.",
+      `I hope your simulations run smoothly, your data makes sense, and your advisor actually replies before your next birthday.
+You're not just optimizing system you’re surviving chaos with snacks, memes, and pure willpower (no coffee needed, of course 😜).`,
+      `This year, I wish you less stress, more progress, and all the happiness you deserve plus maybe a surprise ‘S.T.’ after your name soon! 🎓✨
+Keep going, sis. You're doing amazing, even if your laptop says otherwise.`,
+      "Love you always, and don’t worry… the thesis won’t last forever, but your birthday cake will disappear today.❤",
+      `yh wlpun enih kodenya dari gpt tp se engganya ak bisa ngoding lah awokawk`,
+      `SLAMET 22 Y COK`
+    ];
+
+    let paraIndex = 0;
+    let charIndex = 0;
+    const contentDiv = document.getElementById("content");
+
+    function typeParagraph() {
+      if (paraIndex < paragraphs.length) {
+        // Buat elemen paragraf baru
+        let p = document.createElement("p");
+        p.classList.add("paragraph");
+        contentDiv.appendChild(p);
+
+        function typeChar() {
+          if (charIndex < paragraphs[paraIndex].length) {
+            p.textContent += paragraphs[paraIndex].charAt(charIndex);
+            charIndex++;
+            setTimeout(typeChar, 50);
+          } else {
+            // Pindah ke paragraf selanjutnya
+            paraIndex++;
+            charIndex = 0;
+            setTimeout(typeParagraph, 500); // Jeda antar paragraf
+          }
+        }
+
+        typeChar();
+      }
+    }
+
+    typeParagraph();
+  </script>
+
+</body>
+</html>
